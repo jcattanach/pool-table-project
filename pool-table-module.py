@@ -5,8 +5,9 @@ current_tables = []
 class Table:
     def __init__(self, table_number):
         self.table_number = table_number
-        self.start_time = 0000
-        self.end_time = 0000
+        self.start_time = 0
+        self.end_time = 0
+        self.total_time = 0
         self.available = True
 
     def as_dict(self):
@@ -14,6 +15,14 @@ class Table:
 
     def as_string(self):
         return "\nTable #: {0}\nStart time: {1}\nEnd time: {2}\nTotal time: (tbd)\nAvailable: {3}\n".format(self.table_number,self.start_time,self.end_time,self.available)
+
+
+# for index in range(1,13):
+#     table = Table(str(index))
+#     current_tables.append(table.__dict__)
+#
+# print("using a loop")
+# print(current_tables)
 
 # class objects
 table1 = Table("1")
@@ -29,7 +38,22 @@ table10 = Table("10")
 table11 = Table("11")
 table12 = Table("12")
 
+all_tables = [table1,table2,table3,table4,table5,table6,table7,
+table8,table9,table10,table11,table12]
+
 current_tables = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__, ]
+
+
+try:
+    with open("pool-9-27-18.json","r") as file_object:
+        loaded_tables = json.load(file_object)
+        for i in range(len(all_tables)):
+            all_tables[i].available = loaded_tables[i]['available']
+except:
+    with open("pool-9-27-18.json", "w") as file_object:
+        json.dump(current_tables,file_object, indent=2)
+
+# print(current_tables)
 
 # user interface while loop
 while True:
@@ -39,6 +63,9 @@ while True:
         break
 
     if(menu_option == '1'):
+
+        #table = current_tables[int(menu_option) - 1]
+
         #menu options for tables
         if(table1.available == True):
             table_start = input("Enter start time: ")
@@ -177,6 +204,7 @@ while True:
             table_start = input("Enter start time: ")
             table12.start_time = table_start
             table12.available = False
+            print(table12.available)
         elif(table12.available == False):
             table_end = input("Enter end time: ")
             table12.available = True
@@ -190,8 +218,12 @@ while True:
     else:
         print("Enter a valid table number or enter 'q' to quit.")
 
-with open("pool-9-27-18.json", "a") as file_object:
-    json.dump(current_tables,file_object, indent=2)
+
+    current_tables = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__]
+    with open("pool-9-27-18.json", "w") as file_object:
+        json.dump(current_tables,file_object, indent=2)
+
+
 
 
 print("** Menu exited **")
