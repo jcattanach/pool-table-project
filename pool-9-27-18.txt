@@ -1,0 +1,18 @@
+
+Table #: 5
+Start time: 1500
+End time: 1516
+Total time: 0 hours 16 minutes
+Available: True
+
+Table #: 4
+Start time: 1737
+End time: 1800
+Total time: 0 hours 23 minutes
+Available: True
+
+Table #: 12
+Start time: 1624
+End time: 1832
+Total time: 2 hours 8 minutes
+Available: True
