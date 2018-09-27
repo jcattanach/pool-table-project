@@ -12,6 +12,9 @@ class Table:
     def as_dict(self):
         return self.__dict__
 
+    def as_string(self):
+        return "\nTable #: {0}\nStart time: {1}\nEnd time: {2}\nTotal time: (tbd)\nAvailable: {3}\n".format(self.table_number,self.start_time,self.end_time,self.available)
+
 # class objects
 table1 = Table("1")
 table2 = Table("2")
@@ -26,10 +29,12 @@ table10 = Table("10")
 table11 = Table("11")
 table12 = Table("12")
 
+current_tables = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__, ]
+
 # user interface while loop
 while True:
     print("** Pool Table Menu **")
-    menu_option = input("Enter the table number: ")
+    menu_option = input("Enter the table number or type 'v' to view all: ")
     if(menu_option == 'q'):
         break
 
@@ -43,8 +48,8 @@ while True:
             table_end = input("Enter end time: ")
             table1.available = True
             table1.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table1.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table1.as_string())
 
     elif(menu_option == '2'):
         if(table2.available == True):
@@ -55,8 +60,8 @@ while True:
             table_end = input("Enter end time: ")
             table2.available = True
             table2.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table2.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table2.as_string())
 
     elif(menu_option == '3'):
         if(table3.available == True):
@@ -67,8 +72,8 @@ while True:
             table_end = input("Enter end time: ")
             table3.available = True
             table3.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table3.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table3.as_string())
 
     elif(menu_option == '4'):
         if(table4.available == True):
@@ -79,8 +84,8 @@ while True:
             table_end = input("Enter end time: ")
             table4.available = True
             table4.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table4.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table4.as_string())
 
     elif(menu_option == '5'):
         if(table5.available == True):
@@ -91,8 +96,8 @@ while True:
             table_end = input("Enter end time: ")
             table5.available = True
             table5.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table5.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table5.as_string())
 
     elif(menu_option == '6'):
         if(table6.available == True):
@@ -103,8 +108,9 @@ while True:
             table_end = input("Enter end time: ")
             table6.available = True
             table6.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table6.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table6.as_string())
+
 
     elif(menu_option == '7'):
         if(table7.available == True):
@@ -115,8 +121,8 @@ while True:
             table_end = input("Enter end time: ")
             table7.available = True
             table7.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table7.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table7.as_string())
 
     elif(menu_option == '8'):
         if(table8.available == True):
@@ -127,8 +133,8 @@ while True:
             table_end = input("Enter end time: ")
             table8.available = True
             table8.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table8.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table8.as_string())
 
     elif(menu_option == '9'):
         if(table9.available == True):
@@ -139,8 +145,8 @@ while True:
             table_end = input("Enter end time: ")
             table9.available = True
             table9.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table9.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table9.as_string())
 
     elif(menu_option == '10'):
         if(table10.available == True):
@@ -151,8 +157,8 @@ while True:
             table_end = input("Enter end time: ")
             table10.available = True
             table10.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table10.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table10.as_string())
 
     elif(menu_option == '11'):
         if(table11.available == True):
@@ -163,8 +169,8 @@ while True:
             table_end = input("Enter end time: ")
             table11.available = True
             table11.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table11.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table11.as_string())
 
     elif(menu_option == '12'):
         if(table12.available == True):
@@ -175,11 +181,18 @@ while True:
             table_end = input("Enter end time: ")
             table12.available = True
             table12.end_time = table_end
-            with open("pool-9-25-18.json", "a") as file_object:
-                json.dump(table12.as_dict(),file_object, indent=2)
+            with open("pool-9-27-18.txt","a") as file_object:
+                file_object.write(table12.as_string())
+
+    elif(menu_option == 'v'):
+            print(current_tables)
 
     else:
         print("Enter a valid table number or enter 'q' to quit.")
+
+with open("pool-9-27-18.json", "a") as file_object:
+    json.dump(current_tables,file_object, indent=2)
+
 
 print("** Menu exited **")
 
