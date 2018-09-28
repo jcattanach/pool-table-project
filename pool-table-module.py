@@ -1,6 +1,6 @@
 import json
 # lists
-current_tables = []
+tables_as_dict = []
 # class
 class Table:
     def __init__(self, table_number):
@@ -10,19 +10,25 @@ class Table:
         self.play_time_hours = 0
         self.play_time_minutes = 0
         self.available = True
+        self.cost = 0.0
+
+    def get_cost(self):
+        total_minutes = ((self.play_time_hours * 60) + self.play_time_minutes)
+        self.cost = total_minutes * 0.5
+        return self.cost
 
     def as_dict(self):
         return self.__dict__
 
     def as_string(self):
-        return "\nTable #: {0}\nStart time: {1}\nEnd time: {2}\nTotal time: {3} hours {4} minutes\nAvailable: {5}\n".format(self.table_number,self.start_time,self.end_time,self.play_time_hours,self.play_time_minutes,self.available)
+        return "\nTable #: {0}\nStart time: {1}\nEnd time: {2}\nTotal time: {3} hours {4} minutes\nAvailable: {5}\nCost: {6}\n".format(self.table_number,self.start_time,self.end_time,self.play_time_hours,self.play_time_minutes,self.available,self.cost)
 
 # for index in range(1,13):
 #     table = Table(str(index))
-#     current_tables.append(table.__dict__)
+#     tables_as_dict.append(table.__dict__)
 #
 # print("using a loop")
-# print(current_tables)
+# print(tables_as_dict)
 
 # class objects
 table1 = Table("1")
@@ -41,7 +47,7 @@ table12 = Table("12")
 all_tables = [table1,table2,table3,table4,table5,table6,table7,
 table8,table9,table10,table11,table12]
 
-current_tables = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__]
+tables_as_dict = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__]
 
 
 try:
@@ -52,9 +58,9 @@ try:
             all_tables[i].start_time = loaded_tables[i]['start_time']
 except:
     with open("current.json", "w") as file_object:
-        json.dump(current_tables,file_object, indent=2)
+        json.dump(tables_as_dict,file_object, indent=2)
 
-# print(current_tables)
+# print(tables_as_dict)
 
 # user interface while loop
 while True:
@@ -63,7 +69,7 @@ while True:
     if(menu_option == '3'):
         break
     elif(menu_option == '2'):
-            print(current_tables)
+            print(tables_as_dict)
 
     elif(menu_option == '1'):
 
@@ -101,14 +107,15 @@ while True:
             minutes = difference % 60
             table_selector.play_time_hours = hours
             table_selector.play_time_minutes = minutes
+            table_selector.cost = table_selector.get_cost()
             with open("pool-9-27-18.txt","a") as file_object:
                 file_object.write(table_selector.as_string())
 
     else:
         print("Enter a valid menu option.")
 
-    current_tables = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__]
+    tables_as_dict = [table1.__dict__, table2.__dict__, table3.__dict__, table4.__dict__, table5.__dict__, table6.__dict__, table7.__dict__, table8.__dict__, table9.__dict__, table10.__dict__, table11.__dict__, table12.__dict__]
     with open("current.json", "w") as file_object:
-        json.dump(current_tables,file_object, indent=2)
+        json.dump(tables_as_dict,file_object, indent=2)
 
 print("** Menu exited **")
