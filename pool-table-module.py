@@ -18,11 +18,8 @@ class Table:
         self.cost = total_minutes * 0.5
         return self.cost
 
-    def as_dict(self):
-        return self.__dict__
-
     def as_string(self):
-        return "\nTable #: {0}\nStart time: {1}\nEnd time: {2}\nTotal time: {3} hours {4} minutes\nAvailable: {5}\nCost: {6}\n".format(self.table_number,self.start_time,self.end_time,self.play_time_hours,self.play_time_minutes,self.available,self.cost)
+        return "\nTable #: {0}\nStart time: {1}\nEnd time: {2}\nTotal time: {3} hours {4} minutes\nAvailable: {5}\nCost: ${6}\n".format(self.table_number,self.start_time,self.end_time,self.play_time_hours,self.play_time_minutes,self.available,self.cost)
 
 for index in range(1,13):
     table = Table(str(index))
