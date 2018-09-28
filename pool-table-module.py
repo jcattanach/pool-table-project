@@ -56,42 +56,47 @@ while True:
             except ValueError:
                 print("Select a valid table...")
             except IndexError:
-                print("Select a valid table...(1-12)")
+                print("Select a valid table (1-12)...")
 
         if(table_selector.available == True):
             table_start = input("Enter start time (24hr format): ")
             table_selector.start_time = table_start
             table_selector.available = False
+
         elif(table_selector.available == False):
-            table_end = input("Enter end time (24hr format): ")
-            table_selector.available = True
-            table_selector.end_time = table_end
-            string_table_start = str(table_selector.start_time)
-            if(len(string_table_start) == 3):
-                hours = int(string_table_start[0])
-                minutes = int(string_table_start[1,3])
-                start_total = hours * 60 + minutes
-            elif(len(string_table_start) == 4):
-                hours = int(string_table_start[:2])
-                minutes = int(string_table_start[2:4])
-                start_total = hours * 60 + minutes
-            string_table_end = str(table_selector.end_time)
-            if(len(string_table_end) == 3):
-                hours = int(string_table_end[0])
-                minutes = int(string_table_end[1,3])
-                end_total = hours * 60 + minutes
-            elif(len(string_table_end) == 4):
-                hours = int(string_table_end[:2])
-                minutes = int(string_table_end[2:4])
-                end_total = hours * 60 + minutes
-            difference = end_total - start_total
-            hours = difference // 60
-            minutes = difference % 60
-            table_selector.play_time_hours = hours
-            table_selector.play_time_minutes = minutes
-            table_selector.cost = table_selector.get_cost()
-            with open("pool-9-27-18.txt","a") as file_object:
-                file_object.write(table_selector.as_string())
+            try:
+                table_end = input("Enter end time (24hr format): ")
+                table_selector.available = True
+                table_selector.end_time = table_end
+                string_table_start = str(table_selector.start_time)
+                if(len(string_table_start) == 3):
+                    hours = int(string_table_start[0])
+                    minutes = int(string_table_start[1,3])
+                    start_total = hours * 60 + minutes
+                elif(len(string_table_start) == 4):
+                    hours = int(string_table_start[:2])
+                    minutes = int(string_table_start[2:4])
+                    start_total = hours * 60 + minutes
+                string_table_end = str(table_selector.end_time)
+                if(len(string_table_end) == 3):
+                    hours = int(string_table_end[0])
+                    minutes = int(string_table_end[1,3])
+                    end_total = hours * 60 + minutes
+                elif(len(string_table_end) == 4):
+                    hours = int(string_table_end[:2])
+                    minutes = int(string_table_end[2:4])
+                    end_total = hours * 60 + minutes
+                difference = end_total - start_total
+                hours = difference // 60
+                minutes = difference % 60
+                table_selector.play_time_hours = hours
+                table_selector.play_time_minutes = minutes
+                table_selector.cost = table_selector.get_cost()
+                with open("pool-9-27-18.txt","a") as file_object:
+                    file_object.write(table_selector.as_string())
+            except:
+                print("You did not enter a valid time for start or end time\nPlease reenter times in 24hr format(HHMM or HMM)...")
+                table_selector.available = True
 
     else:
         print("Enter a valid menu option.")
