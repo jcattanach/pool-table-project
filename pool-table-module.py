@@ -42,7 +42,22 @@ while True:
     if(menu_option == '3'):
         break
     elif(menu_option == '2'):
-            print(tables_as_dict)
+            view_options = input("To view all current tables type '1'\nTo view all occupied tables type '2'\nTo view all open tables type '3': ")
+            if view_options == '1':
+                for table in all_tables:
+                    print(table.as_string())
+            elif view_options == '2':
+                print("The following tables are occupied...")
+                for table in all_tables:
+                    if table.available == False:
+                        print(f"Table {table.table_number}")
+            elif view_options == '3':
+                print("The following tables are open...")
+                for table in all_tables:
+                    if table.available == True:
+                        print(f"Table {table.table_number}")
+            else:
+                print("Enter a valid menu option...")
 
     elif(menu_option == '1'):
         while True:
@@ -53,7 +68,7 @@ while True:
             except ValueError:
                 print("Select a valid table...")
             except IndexError:
-                print("Select a valid table (1-12)...")
+                print("Select a valid table (1-{0})...".format(len(all_tables)))
 
         if(table_selector.available == True):
             table_start = input("Enter start time (24hr format): ")
@@ -68,7 +83,7 @@ while True:
                 string_table_start = str(table_selector.start_time)
                 if(len(string_table_start) == 3):
                     hours = int(string_table_start[0])
-                    minutes = int(string_table_start[1,3])
+                    minutes = int(string_table_start[1:3])
                     start_total = hours * 60 + minutes
                 elif(len(string_table_start) == 4):
                     hours = int(string_table_start[:2])
@@ -77,7 +92,7 @@ while True:
                 string_table_end = str(table_selector.end_time)
                 if(len(string_table_end) == 3):
                     hours = int(string_table_end[0])
-                    minutes = int(string_table_end[1,3])
+                    minutes = int(string_table_end[1:3])
                     end_total = hours * 60 + minutes
                 elif(len(string_table_end) == 4):
                     hours = int(string_table_end[:2])
@@ -96,7 +111,7 @@ while True:
                 table_selector.available = True
 
     else:
-        print("Enter a valid menu option.")
+        print("Enter a valid menu option...")
 
     with open("current.json", "w") as file_object:
         json.dump(tables_as_dict,file_object, indent=2)
