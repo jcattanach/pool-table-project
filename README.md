@@ -10,7 +10,6 @@ Here are the requested features:
 - As an admin each table in the list should show, whether the table is OCCUPIED or NOT OCCUPIED. 
 
 - As an admin if the table is OCCUPIED then show the start time of the table, number of minutes played.
-(Hardmode - If the minutes are > 60 then show them in terms of hours) 
 
 - As an admin you can only give out the tables that are NOT OCCUPIED. 
 This means if pool table 8 is occupied and you try to give it out then the app will print 
