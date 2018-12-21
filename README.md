@@ -14,3 +14,6 @@ Here are the requested features:
 - As an admin you can only give out the tables that are NOT OCCUPIED. 
 This means if pool table 8 is occupied and you try to give it out then the app will print 
 a message saying "Pool Table 8 is currently occupied". 
+
+#### Preview
+![preview-gif](https://github.com/jcattanach/pool-table-project/blob/master/pool-table.gif)
