@@ -3,11 +3,11 @@ This is my pool table project for DigitalCrafts
 
 This is a pool table management app which will manage the pool tables in a game room. 
 
-Here are the requested features: 
+#### features 
 
-- As an admin you should be able to see all the tables (12) 
+- Admin can see the status of all the tables (OCCUPIED or NOT OCCUPIED).
 
-- As an admin each table in the list should show, whether the table is OCCUPIED or NOT OCCUPIED. 
+- Admin can change status the of each tables by entering the start time or end time.
 
 - All data (start time, end time, minutes played, and cost) for each table is stored in a text file.
 
